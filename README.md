@@ -104,3 +104,4 @@ oldpeak: higher ST depression → higher risk
 
 These variables clearly show that reduced exercise capacity is strongly associated with heart disease.
 <img width="800" height="940" alt="Rplot01" src="https://github.com/user-attachments/assets/9e45251d-9298-4c78-a709-84aafebcd326" />
+<img width="1614" height="1198" alt="Rplot02" src="https://github.com/user-attachments/assets/27b6841d-85b4-44a9-a857-e0628a5d7cbb" />
