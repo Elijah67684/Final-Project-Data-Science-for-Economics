@@ -93,5 +93,4 @@ These consistently appear at the top of:
 
 Logistic regression coefficients
 
-Random forest MeanDecreaseGini importan
-rtance:
+Random forest MeanDecreaseGini importa
