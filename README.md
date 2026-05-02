@@ -87,4 +87,12 @@ Key Findings
 | **ca** | Number of major vessels visualized |
 | **thal** | Thallium stress test abnormalities |
 thal	Thallium stress test abnormalities1. Strongest Predictors of Heart Disease
-Across logistic regression and random forest importance:
+Across logistic regression and random forest impo
+
+These consistently appear at the top of:
+
+Logistic regression coefficients
+
+Random forest MeanDecreaseGini importan
+
+rtance:
