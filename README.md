@@ -92,3 +92,15 @@ Across logistic regression and random forest impo
 These consistently appear at the top of:
 
 Logistic regression 
+
+2. Lifestyle‑Related Insights
+Although the UCI dataset does not include smoking or alcohol use, it includes exercise‑related variables that act as proxies:
+
+exang: individuals with exercise‑induced angina have much higher disease rates
+
+thalach: lower max heart rate → higher disease prevalence
+
+oldpeak: higher ST depression → higher risk
+
+These variables clearly show that reduced exercise capacity is strongly associated with heart disease.
+<img width="800" height="940" alt="Rplot01" src="https://github.com/user-attachments/assets/9e45251d-9298-4c78-a709-84aafebcd326" />
