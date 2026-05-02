@@ -190,7 +190,10 @@ This project shows that exercise capacity, chest pain type, ST depression, age, 
 
 
 
-# (full Code)
+# (Full Code)
+
+
+
 # Install 
 
 # Final Project: Heart Disease Prediction
