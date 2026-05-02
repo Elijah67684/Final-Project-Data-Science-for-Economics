@@ -32,4 +32,42 @@ Chest pain type: four clinically distinct categories
 
 Target variable: presence or absence of heart disease
 
-The dataset is cleaned and preprocessed to remove unused identifiers and convert categorical variables into factors.
+The dataset is cleaned and preprocessed to remove unu
+
+# Methodology
+This project is implemented entirely in R, using the following workflow:
+
+1. Data Cleaning & Preparation
+Converted num into a binary target variable (Disease vs. NoDisease)
+
+Standardized categorical predictors (sex, cp, exang, thal, etc.)
+
+Created age groups for demographic analysis
+
+Removed unused columns (id, dataset)
+
+2. Exploratory Data Analysis
+Visualizations and summaries include:
+
+Heart disease prevalence by sex
+
+Age‑group disease rates
+
+Chest pain type vs. disease
+
+Exercise‑induced angina vs. disease
+
+Boxplots of max heart rate and ST depression
+
+These reveal strong patterns in exercise capacity, chest pain type, and age.
+
+3. Machine Learning Models
+Two models were trained:
+
+Logistic Regression  
+Used to interpret coefficient direction and magnitude.
+
+Random Forest  
+Used to measure variable importance and predictive contribution.
+
+Train/test split: 80% training, 20% testingsed identifiers and convert categorical variables into factors.
