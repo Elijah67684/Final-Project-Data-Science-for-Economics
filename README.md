@@ -76,5 +76,13 @@ Train/test split: 80% training, 20% testingsed identifiers and convert categoric
 1. Strongest Predictors of Heart Disease
 Across logistic regression and random forest importance:
 Key Findings
-1. Strongest Predictors of Heart Disease
+
+
+Variable	Why It Predicts Heart Disease
+oldpeak	ST depression after exercise → ischemia indicator
+thalach	Lower max heart rate → reduced exercise capacity
+cp	Typical angina strongly associated with disease
+exang	Exercise‑induced angina is a major risk marker
+ca	Number of major vessels visualized
+thal	Thallium stress test abnormalities1. Strongest Predictors of Heart Disease
 Across logistic regression and random forest importance:
