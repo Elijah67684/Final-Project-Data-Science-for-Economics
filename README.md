@@ -125,3 +125,4 @@ Males show a significantly higher prevalence of heart disease than females in th
 Income
 Not included in UCI dataset.
 However, population‑level data (BRFSS, WHO) consistently show higher heart disease rates in lower‑income groups — discussed in the written analysis.
+<img width="1614" height="1198" alt="Rplot03" src="https://github.com/user-attachments/assets/78a01667-5ce3-44e7-af91-b4988ee8e9bd" />
