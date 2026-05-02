@@ -91,6 +91,4 @@ Across logistic regression and random forest impo
 
 These consistently appear at the top of:
 
-Logistic regression coefficients
-
-Random forest MeanDecreaseGini importa
+Logistic regression coefficientsseGini importa
