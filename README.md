@@ -3,7 +3,7 @@ Heart Disease Prediction Using Machine Learning
 ECON 4970 — Data Science for Economics
 Elijah Bennett‑Hughes — April 2026
 
-#Project Overview 
+# Project Overview 
 
 This project investigates the medical, demographic, and physiological factors that predict heart disease using the UCI Heart Disease Dataset. The analysis connects machine learning outputs to economic and public‑health questions:
 
@@ -17,7 +17,7 @@ Which variables contribute most to prediction accuracy?
 
 Using logistic regression and random forest models, this project identifies the most influential predictors and evaluates how demographic and physiological characteristics shape heart disease risk.
 
-#Dataset
+# Dataset
 The dataset used is the Heart Disease UCI dataset, containing 303 patient records with:
 
 Demographics: age, sex
