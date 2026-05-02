@@ -122,3 +122,5 @@ Heart disease prevalence increases sharply with age:
 Gender
 Males show a significantly higher prevalence of heart disease than females in this dataset.
 
+<img width="975" height="562" alt="IMG_1107" src="https://github.com/user-attachments/assets/7e725996-6927-47ef-94d2-2be1f02ba908" />
+<img width="1614" height="1198" alt="Rplot03" src="https://github.com/user-attachments/assets/532ce21a-87a3-4728-9198-bf860185163b" />
