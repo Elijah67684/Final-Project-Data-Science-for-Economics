@@ -124,3 +124,194 @@ Males show a significantly higher prevalence of heart disease than females in th
 
 <img width="975" height="562" alt="IMG_1107" src="https://github.com/user-attachments/assets/7e725996-6927-47ef-94d2-2be1f02ba908" />
 <img width="1614" height="1198" alt="Rplot03" src="https://github.com/user-attachments/assets/532ce21a-87a3-4728-9198-bf860185163b" />
+
+Income
+Not included in UCI dataset.
+However, population‑level data (BRFSS, WHO) consistently show higher heart disease rates in lower‑income groups — discussed in the written analysis.
+
+# 4. Variables That Contribute Most to Prediction Accuracy
+Random forest importance identifies:
+
+oldpeak
+
+ca
+
+thal
+
+thalach
+
+cp
+
+exang
+
+These features reduce classification error the most and appear as top predictors in both models, strengthening the robustness of the findings.
+
+Code Summary
+analysis pipeline includes:
+
+# Load packages
+library(tidyverse)
+library(caret)
+library(randomForest)
+library(ggplot2)
+
+# Load and clean data
+df <- read.csv("heart_disease_uci.csv")
+df$target <- factor(ifelse(df$num == 0, "NoDisease", "Disease"))
+factor_cols <- c("sex","cp","fbs","restecg","exang","slope","ca","thal")
+df[factor_cols] <- lapply(df[factor_cols], factor)
+df <- df %>% select(-id, -dataset, -num)
+
+# Exploratory analysis
+group_by(df, sex) %>% summarise(rate = mean(target == "Disease"))
+ggplot(df, aes(x = target, y = oldpeak)) + geom_boxplot()
+
+# Train/test split
+train_index <- createDataPartition(df$target, p = 0.8, list = FALSE)
+train <- df[train_index, ]
+test  <- df[-train_index, ]
+
+
+# How to Run This Project
+Clone the repository
+
+Place heart_disease_uci.csv in the project directory
+
+Run heart_disease_analysis.R in RStudio
+
+All visualizations and model outputs will be generated automatically
+
+
+# Main Takeaway
+This project shows that exercise capacity, chest pain type, ST depression, age, and thallium test results are the most powerful predictors of heart disease. Both logistic regression and random forest models converge on the same set of high‑importance variables, providing strong evidence for the medical and demographic drivers of heart disease risk.
+
+
+
+
+
+
+# (full Code)
+# Install 
+
+# Final Project: Heart Disease Prediction
+# Dataset: heart_disease_uci.csv
+
+# 1. Packages --------------------------------------------------------------
+
+packages <- c("tidyverse", "caret", "randomForest", "ggplot2")
+install.packages(setdiff(packages, rownames(installed.packages())))
+library(tidyverse)
+library(caret)
+library(randomForest)
+library(ggplot2)
+
+set.seed(123)
+
+# 2. Load data -------------------------------------------------------------
+
+df <- read.csv("heart_disease_uci.csv")
+
+# Inspect structure
+str(df)
+names(df)
+
+# 3. Create target + basic cleaning ---------------------------------------
+
+# num: 0 = no disease, >0 = disease
+df$target <- ifelse(df$num == 0, "NoDisease", "Disease")
+df$target <- factor(df$target)
+
+# Categorical predictors (UCI heart)
+factor_cols <- c("sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal")
+df[factor_cols] <- lapply(df[factor_cols], factor)
+
+# Drop columns not used as predictors
+df <- df %>% select(-id, -dataset, -num)
+
+# Check missing values
+colSums(is.na(df))
+
+# 4. Exploratory analysis --------------------------------------------------
+
+# 4.1 Overall heart disease prevalence
+table(df$target)
+prop.table(table(df$target))
+
+# 4.2 Heart disease by sex
+df %>%
+  group_by(sex) %>%
+  summarise(rate = mean(target == "Disease")) %>%
+  print()
+
+ggplot(df, aes(x = sex, fill = target)) +
+  geom_bar(position = "fill") +
+  labs(title = "Heart Disease Rate by Sex", y = "Proportion") +
+  theme_minimal()
+
+# 4.3 Age distribution and age groups
+summary(df$age)
+
+df <- df %>%
+  mutate(age_group = cut(
+    age,
+    breaks = c(20, 40, 55, 70, 100),
+    labels = c("20–39", "40–54", "55–69", "70+"),
+    right = FALSE
+  ))
+
+df %>%
+  group_by(age_group) %>%
+  summarise(rate = mean(target == "Disease")) %>%
+  print()
+
+ggplot(df, aes(x = age_group, y = as.numeric(target == "Disease"))) +
+  stat_summary(fun = mean, geom = "bar", fill = "tomato") +
+  labs(title = "Heart Disease Rate by Age Group", y = "Proportion with Disease") +
+  theme_minimal()
+
+# 4.4 Lifestyle/physiology-related variables (cp, exang, thalch, oldpeak)
+
+df %>%
+  group_by(cp) %>%
+  summarise(rate = mean(target == "Disease")) %>%
+  print()
+
+ggplot(df, aes(x = cp, y = as.numeric(target == "Disease"))) +
+  stat_summary(fun = mean, geom = "bar", fill = "steelblue") +
+  labs(title = "Heart Disease Rate by Chest Pain Type", y = "Proportion with Disease") +
+  theme_minimal()
+
+df %>%
+  group_by(exang) %>%
+  summarise(rate = mean(target == "Disease")) %>%
+  print()
+
+ggplot(df, aes(x = exang, y = as.numeric(target == "Disease"))) +
+  stat_summary(fun = mean, geom = "bar", fill = "darkgreen") +
+  labs(title = "Heart Disease Rate by Exercise-Induced Angina", y = "Proportion with Disease") +
+  theme_minimal()
+
+ggplot(df, aes(x = target, y = thalch, fill = target)) +
+  geom_boxplot() +
+  labs(title = "Max Heart Rate (thalch) by Heart Disease Status") +
+  theme_minimal()
+
+ggplot(df, aes(x = target, y = oldpeak, fill = target)) +
+  geom_boxplot() +
+  labs(title = "ST Depression (oldpeak) by Heart Disease Status") +
+  theme_minimal()
+
+# 5. Train/test split ------------------------------------------------------
+
+set.seed(123)
+train_index <- createDataPartition(df$target, p = 0.8, list = FALSE)
+train <- df[train_index, ]
+test  <- df[-train_index, ]
+
+# Align factor levels in test to training
+for (col in factor_cols) {
+  test[[col]] <- factor(test[[col]], levels = levels(train[[col]]))
+}
+
+
+
