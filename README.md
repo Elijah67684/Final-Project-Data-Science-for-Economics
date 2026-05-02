@@ -71,3 +71,10 @@ Random Forest
 Used to measure variable importance and predictive contribution.
 
 Train/test split: 80% training, 20% testingsed identifiers and convert categorical variables into factors.
+
+# Key Findings
+1. Strongest Predictors of Heart Disease
+Across logistic regression and random forest importance:
+Key Findings
+1. Strongest Predictors of Heart Disease
+Across logistic regression and random forest importance:
